@@ -21,7 +21,7 @@ public class PanelEntradaDatos extends JPanel
     private JLabel lbFechaEntra;
     private JTextField tfEmpleado;
     private JTextField tfNumHoras;
-    private JTextField tfFechaNac;
+    private JTextField tfFechaNacim;
     private JTextField tfFechaEntra;
     
     //------------------------
@@ -63,13 +63,13 @@ public class PanelEntradaDatos extends JPanel
         tfEmpleado.setBounds(360, 10, 60, 20);
         add(tfEmpleado);
         
-        tfNumHoras = new JTextField("10");
+        tfNumHoras = new JTextField("100");
         tfNumHoras.setBounds(360, 40, 60, 20);
         add(tfNumHoras);
         
-        tfFechaNac = new JTextField("1990");
-        tfFechaNac.setBounds(360, 70, 60, 20);
-        add(tfFechaNac);
+        tfFechaNacim = new JTextField("1990");
+        tfFechaNacim.setBounds(360, 70, 60, 20);
+        add(tfFechaNacim);
 
         tfFechaEntra = new JTextField("2010");
         tfFechaEntra.setBounds(360, 100, 60, 20);
@@ -94,7 +94,7 @@ public class PanelEntradaDatos extends JPanel
     
     public String getFechaNacim()
     {
-        return tfFechaNac.getText();
+        return tfFechaNacim.getText();
     }
 
     public String getFechaEntrad()
@@ -102,11 +102,4 @@ public class PanelEntradaDatos extends JPanel
         return tfFechaEntra.getText();
     }
     
-    //Metodo para borrar cajas de texto
-    public void borrar()
-    {
-        tfEmpleado.setText("");
-        tfNumHoras.setText("");
-        tfFechaNac.setText("");
-    }
 }

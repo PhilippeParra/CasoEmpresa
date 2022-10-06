@@ -43,12 +43,14 @@ public class Controlador implements ActionListener
                 int fechaNacimiento = Integer.parseInt(venPrin.miPanelEntradaDatos.getFechaNacim());
                 int fechaIngreso = Integer.parseInt(venPrin.miPanelEntradaDatos.getFechaEntrad());
             
-                model = new Empleado(nombreEmpleado , numHorasMes);
+                model = new Empleado(nombreEmpleado , numHorasMes, fechaNacimiento, fechaIngreso);
                 
                 venPrin.miPanelResultado.mostrarResultado("Se ha añadidio un empleado");
                 venPrin.miPanelResultado.mostrarResultado("Su Nombre es " + model.getNombreEmpleado());
                 venPrin.miPanelResultado.mostrarResultado("Su salario base es " + model.getSalarioMinimo());
-                venPrin.miPanelResultado.mostrarResultado("Sus horas de trabajo son: " + model.getNumHorasMes());
+                venPrin.miPanelResultado.mostrarResultado("Sus horas de trabajo son: " + model.getNumHorasMes());                
+                venPrin.miPanelResultado.mostrarResultado("Fecha de nacimiento: " + model.getFechaNacim());
+                venPrin.miPanelResultado.mostrarResultado("Fecha de ingreso: " + model.getFechaEntrad());
                 
                 venPrin.miPanelOperaciones.desactivarBotonAñadir();
                 
@@ -63,7 +65,21 @@ public class Controlador implements ActionListener
         if(comando.equals("calcularSalario"))
         {
             model.calcularSalario();
-            venPrin.miPanelResultado.mostrarResultado("\nTras calcular, el salario actual es " + model.getSalarioFinal());
+            if(model.getSalarioFinal() > 2000000)
+            {
+                venPrin.miPanelResultado.mostrarResultado("\nTras calcular, el salario actual es " + model.getSalarioFinal() + "\nSin subsidio de Transporte.");
+            }
+            else
+            {
+                venPrin.miPanelResultado.mostrarResultado("\nTras calcular, el salario actual es " + model.getSalarioFinal() + "\nCon subsidio de Transporte.");
+            }
+            
+        }
+
+        if(comando.equals("calcularEdad"))
+        {
+            model.calcularEdad();
+            venPrin.miPanelResultado.mostrarResultado("\nTras calcular, la edad de " + model.getNombreEmpleado() + "\nSu edad es: "  + model.getEdadEmpleado());
         }
         
         if(comando.equals("cerrar"))
